@@ -1,0 +1,381 @@
+/*==================================================
+                TABLETS
+==================================================*/
+
+@media(max-width:1024px){
+
+    .header{
+    
+        padding:20px 30px;
+    
+    }
+    
+    .menu{
+    
+        gap:20px;
+    
+    }
+    
+    .buscador input{
+    
+        width:150px;
+    
+    }
+    
+    .hero{
+    
+        grid-template-columns:1fr;
+    
+        text-align:center;
+    
+    }
+    
+    .hero-info{
+    
+        order:2;
+    
+    }
+    
+    .hero-imagen{
+    
+        order:1;
+    
+    }
+    
+    .hero-info h1{
+    
+        font-size:45px;
+    
+    }
+    
+    .tituloSeccion{
+    
+        flex-direction:column;
+    
+        align-items:flex-start;
+    
+        gap:15px;
+    
+    }
+    
+    .cardsDashboard{
+    
+        grid-template-columns:repeat(2,1fr);
+    
+    }
+    
+    .footer{
+    
+        grid-template-columns:repeat(2,1fr);
+    
+    }
+    
+    }
+    
+    
+    /*==================================================
+                    CELULARES
+    ==================================================*/
+    
+    @media(max-width:768px){
+    
+    .header{
+    
+        flex-direction:column;
+    
+        height:auto;
+    
+        padding:20px;
+    
+        gap:20px;
+    
+    }
+    
+    .logo{
+    
+        justify-content:center;
+    
+    }
+    
+    .menu{
+    
+        flex-wrap:wrap;
+    
+        justify-content:center;
+    
+        gap:15px;
+    
+    }
+    
+    .acciones{
+    
+        flex-wrap:wrap;
+    
+        justify-content:center;
+    
+    }
+    
+    .buscador{
+    
+        width:100%;
+    
+    }
+    
+    .buscador input{
+    
+        width:100%;
+    
+    }
+    
+    .hero{
+    
+        width:95%;
+    
+        margin:30px auto;
+    
+    }
+    
+    .hero-info h1{
+    
+        font-size:36px;
+    
+    }
+    
+    .hero-info p{
+    
+        font-size:15px;
+    
+    }
+    
+    .hero-imagen img{
+    
+        width:100%;
+    
+    }
+    
+    .seccion{
+    
+        width:95%;
+    
+    }
+    
+    .gridEventos{
+    
+        grid-template-columns:1fr;
+    
+    }
+    
+    .categorias{
+    
+        grid-template-columns:repeat(2,1fr);
+    
+    }
+    
+    .beneficios{
+    
+        width:95%;
+    
+        grid-template-columns:1fr;
+    
+    }
+    
+    .newsletter{
+    
+        width:95%;
+    
+        padding:35px 20px;
+    
+    }
+    
+    .newsletter h2{
+    
+        font-size:30px;
+    
+    }
+    
+    .suscripcion{
+    
+        flex-direction:column;
+    
+    }
+    
+    .suscripcion input{
+    
+        width:100%;
+    
+    }
+    
+    .suscripcion button{
+    
+        width:100%;
+    
+    }
+    
+    .footer{
+    
+        grid-template-columns:1fr;
+    
+        text-align:center;
+    
+    }
+    
+    .redes{
+    
+        justify-content:center;
+    
+    }
+    
+    /*==========================
+            ADMIN
+    ==========================*/
+    
+    .admin{
+    
+        width:95%;
+    
+    }
+    
+    .encabezadoAdmin{
+    
+        flex-direction:column;
+    
+        align-items:flex-start;
+    
+    }
+    
+    .cardsDashboard{
+    
+        grid-template-columns:1fr;
+    
+    }
+    
+    .panelTabla{
+    
+        overflow-x:auto;
+    
+    }
+    
+    table{
+    
+        min-width:800px;
+    
+    }
+    
+    .modalContenido{
+    
+        width:95%;
+    
+        padding:25px;
+    
+    }
+    
+    #formEvento{
+    
+        grid-template-columns:1fr;
+    
+    }
+    
+    #formEvento textarea{
+    
+        grid-column:span 1;
+    
+    }
+    
+    #formEvento button{
+    
+        grid-column:span 1;
+    
+    }
+    
+    }
+    
+    
+    /*==================================================
+                CELULARES PEQUEÑOS
+    ==================================================*/
+    
+    @media(max-width:480px){
+    
+    .logo h2{
+    
+        font-size:24px;
+    
+    }
+    
+    .hero-info h1{
+    
+        font-size:30px;
+    
+    }
+    
+    .hero-info p{
+    
+        font-size:14px;
+    
+    }
+    
+    .btnPrincipal{
+    
+        width:100%;
+    
+    }
+    
+    .btnSecundario{
+    
+        width:100%;
+    
+    }
+    
+    .tituloSeccion h2{
+    
+        font-size:28px;
+    
+    }
+    
+    .categorias{
+    
+        grid-template-columns:1fr;
+    
+    }
+    
+    .card{
+    
+        padding:20px;
+    
+    }
+    
+    .card h2{
+    
+        font-size:32px;
+    
+    }
+    
+    .card i{
+    
+        width:55px;
+    
+        height:55px;
+    
+        font-size:22px;
+    
+    }
+    
+    .modalHeader h2{
+    
+        font-size:22px;
+    
+    }
+    
+    .newsletter h2{
+    
+        font-size:26px;
+    
+    }
+    
+    .footer{
+    
+        padding:40px 20px;
+    
+    }
+    
+    }
