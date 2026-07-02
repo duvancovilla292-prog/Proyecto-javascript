@@ -1,381 +1,527 @@
 /*==================================================
-                TABLETS
+                RESPONSIVE.CSS
 ==================================================*/
 
-@media(max-width:1024px){
+/*==============================
+        1200px
+==============================*/
+
+@media (max-width:1200px){
 
     .header{
-    
-        padding:20px 30px;
-    
+        padding:18px 4%;
     }
-    
-    .menu{
-    
-        gap:20px;
-    
+
+    .hero,
+    .promo{
+        width:95%;
     }
-    
-    .buscador input{
-    
-        width:150px;
-    
+
+    .seccion,
+    .beneficios,
+    .newsletter,
+    .filtros{
+        width:95%;
     }
-    
-    .hero{
-    
-        grid-template-columns:1fr;
-    
-        text-align:center;
-    
-    }
-    
-    .hero-info{
-    
-        order:2;
-    
-    }
-    
-    .hero-imagen{
-    
-        order:1;
-    
-    }
-    
-    .hero-info h1{
-    
-        font-size:45px;
-    
-    }
-    
-    .tituloSeccion{
-    
-        flex-direction:column;
-    
-        align-items:flex-start;
-    
-        gap:15px;
-    
-    }
-    
-    .cardsDashboard{
-    
-        grid-template-columns:repeat(2,1fr);
-    
-    }
-    
-    .footer{
-    
-        grid-template-columns:repeat(2,1fr);
-    
-    }
-    
-    }
-    
-    
-    /*==================================================
-                    CELULARES
-    ==================================================*/
-    
-    @media(max-width:768px){
-    
+
+}
+
+/*==============================
+        992px
+==============================*/
+
+@media (max-width:992px){
+
+    /* HEADER */
+
     .header{
-    
-        flex-direction:column;
-    
-        height:auto;
-    
-        padding:20px;
-    
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
         gap:20px;
-    
-    }
-    
-    .logo{
-    
-        justify-content:center;
-    
-    }
-    
-    .menu{
-    
-        flex-wrap:wrap;
-    
-        justify-content:center;
-    
-        gap:15px;
-    
-    }
-    
-    .acciones{
-    
-        flex-wrap:wrap;
-    
-        justify-content:center;
-    
-    }
-    
-    .buscador{
-    
-        width:100%;
-    
-    }
-    
-    .buscador input{
-    
-        width:100%;
-    
-    }
-    
-    .hero{
-    
-        width:95%;
-    
-        margin:30px auto;
-    
-    }
-    
-    .hero-info h1{
-    
-        font-size:36px;
-    
-    }
-    
-    .hero-info p{
-    
-        font-size:15px;
-    
-    }
-    
-    .hero-imagen img{
-    
-        width:100%;
-    
-    }
-    
-    .seccion{
-    
-        width:95%;
-    
-    }
-    
-    .gridEventos{
-    
-        grid-template-columns:1fr;
-    
-    }
-    
-    .categorias{
-    
-        grid-template-columns:repeat(2,1fr);
-    
-    }
-    
-    .beneficios{
-    
-        width:95%;
-    
-        grid-template-columns:1fr;
-    
-    }
-    
-    .newsletter{
-    
-        width:95%;
-    
-        padding:35px 20px;
-    
-    }
-    
-    .newsletter h2{
-    
-        font-size:30px;
-    
-    }
-    
-    .suscripcion{
-    
-        flex-direction:column;
-    
-    }
-    
-    .suscripcion input{
-    
-        width:100%;
-    
-    }
-    
-    .suscripcion button{
-    
-        width:100%;
-    
-    }
-    
-    .footer{
-    
-        grid-template-columns:1fr;
-    
-        text-align:center;
-    
-    }
-    
-    .redes{
-    
-        justify-content:center;
-    
-    }
-    
-    /*==========================
-            ADMIN
-    ==========================*/
-    
-    .admin{
-    
-        width:95%;
-    
-    }
-    
-    .encabezadoAdmin{
-    
-        flex-direction:column;
-    
-        align-items:flex-start;
-    
-    }
-    
-    .cardsDashboard{
-    
-        grid-template-columns:1fr;
-    
-    }
-    
-    .panelTabla{
-    
-        overflow-x:auto;
-    
-    }
-    
-    table{
-    
-        min-width:800px;
-    
-    }
-    
-    .modalContenido{
-    
-        width:95%;
-    
-        padding:25px;
-    
-    }
-    
-    #formEvento{
-    
-        grid-template-columns:1fr;
-    
-    }
-    
-    #formEvento textarea{
-    
-        grid-column:span 1;
-    
-    }
-    
-    #formEvento button{
-    
-        grid-column:span 1;
-    
-    }
-    
-    }
-    
-    
-    /*==================================================
-                CELULARES PEQUEÑOS
-    ==================================================*/
-    
-    @media(max-width:480px){
-    
-    .logo h2{
-    
-        font-size:24px;
-    
-    }
-    
-    .hero-info h1{
-    
-        font-size:30px;
-    
-    }
-    
-    .hero-info p{
-    
-        font-size:14px;
-    
-    }
-    
-    .btnPrincipal{
-    
-        width:100%;
-    
-    }
-    
-    .btnSecundario{
-    
-        width:100%;
-    
-    }
-    
-    .tituloSeccion h2{
-    
-        font-size:28px;
-    
-    }
-    
-    .categorias{
-    
-        grid-template-columns:1fr;
-    
-    }
-    
-    .card{
-    
+
         padding:20px;
-    
+
+        height:auto;
+
     }
-    
-    .card h2{
-    
-        font-size:32px;
-    
+
+    .menu{
+
+        width:100%;
+
+        justify-content:center;
+
+        order:3;
+
+        flex-wrap:wrap;
+
+        gap:20px;
+
     }
-    
-    .card i{
-    
-        width:55px;
-    
-        height:55px;
-    
-        font-size:22px;
-    
+
+    .acciones{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
     }
-    
-    .modalHeader h2{
-    
-        font-size:22px;
-    
+
+    .buscador input{
+
+        width:180px;
+
     }
-    
-    .newsletter h2{
-    
-        font-size:26px;
-    
+
+    /* HERO */
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
     }
-    
+
+    .heroContenido{
+
+        order:2;
+
+    }
+
+    .heroImagen{
+
+        order:1;
+
+    }
+
+    .heroContenido h1{
+
+        font-size:48px;
+
+    }
+
+    .heroBotones{
+
+        justify-content:center;
+
+    }
+
+    /* PROMO */
+
+    .promo{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .promoContenido{
+
+        order:2;
+
+    }
+
+    .promoImagen{
+
+        order:1;
+
+    }
+
+    /* FOOTER */
+
     .footer{
-    
-        padding:40px 20px;
-    
+
+        grid-template-columns:repeat(2,1fr);
+
     }
-    
+
+}
+
+/*==============================
+        768px
+==============================*/
+
+@media (max-width:768px){
+
+    /* HEADER */
+
+    .logo h2{
+
+        font-size:24px;
+
     }
+
+    .menu{
+
+        gap:15px;
+
+    }
+
+    .menu a{
+
+        font-size:15px;
+
+    }
+
+    .buscador{
+
+        width:100%;
+
+    }
+
+    .buscador input{
+
+        width:100%;
+
+    }
+
+    .btnLogin{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    /* HERO */
+
+    .hero{
+
+        margin:40px auto;
+
+        gap:35px;
+
+    }
+
+    .heroContenido h1{
+
+        font-size:40px;
+
+    }
+
+    .heroContenido p{
+
+        font-size:15px;
+
+    }
+
+    /* FILTROS */
+
+    .filtros{
+
+        flex-direction:column;
+
+    }
+
+    .filtro{
+
+        width:100%;
+
+    }
+
+    .filtro select{
+
+        width:100%;
+
+    }
+
+    .filtros .btnPrincipal{
+
+        width:100%;
+
+    }
+
+    /* TITULOS */
+
+    .tituloSeccion{
+
+        text-align:center;
+
+        justify-content:center;
+
+    }
+
+    .tituloSeccion h2{
+
+        font-size:34px;
+
+    }
+
+    /* CATEGORIAS */
+
+    .categorias{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    /* EVENTOS */
+
+    .gridEventos{
+
+        grid-template-columns:1fr;
+
+    }
+
+    /* BENEFICIOS */
+
+    .beneficios{
+
+        grid-template-columns:1fr;
+
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+
+        padding:40px 25px;
+
+    }
+
+    .newsletter h2{
+
+        font-size:32px;
+
+    }
+
+    .suscripcion{
+
+        flex-direction:column;
+
+    }
+
+    .suscripcion input,
+
+    .suscripcion button{
+
+        width:100%;
+
+    }
+
+    /* FOOTER */
+
+    .footer{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .footerLogo img{
+
+        margin:auto;
+
+        margin-bottom:15px;
+
+    }
+
+    .redes{
+
+        justify-content:center;
+
+    }
+
+    /* MODAL */
+
+    .modalContenido{
+
+        padding:25px;
+
+    }
+
+}
+
+/*==============================
+        576px
+==============================*/
+
+@media (max-width:576px){
+
+    body{
+
+        font-size:15px;
+
+    }
+
+    .hero{
+
+        width:92%;
+
+    }
+
+    .heroContenido h1{
+
+        font-size:34px;
+
+    }
+
+    .heroContenido span{
+
+        font-size:12px;
+
+    }
+
+    .heroBotones{
+
+        flex-direction:column;
+
+    }
+
+    .heroBotones button{
+
+        width:100%;
+
+    }
+
+    .promo{
+
+        padding:25px;
+
+    }
+
+    .promoContenido h2{
+
+        font-size:30px;
+
+    }
+
+    .tituloSeccion h2{
+
+        font-size:28px;
+
+    }
+
+    .categorias{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .categoria{
+
+        padding:30px 20px;
+
+    }
+
+    .evento img{
+
+        height:210px;
+
+    }
+
+    .contenidoEvento{
+
+        padding:20px;
+
+    }
+
+    .contenidoEvento h3{
+
+        font-size:20px;
+
+    }
+
+    .precio{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+    .precio button{
+
+        width:100%;
+
+    }
+
+    .beneficios article{
+
+        padding:25px;
+
+    }
+
+    .newsletter{
+
+        padding:30px 20px;
+
+    }
+
+    .newsletter h2{
+
+        font-size:28px;
+
+    }
+
+    .footer{
+
+        padding:50px 25px;
+
+    }
+
+}
+
+/*==============================
+        400px
+==============================*/
+
+@media (max-width:400px){
+
+    .logo{
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .logo img{
+
+        width:50px;
+
+    }
+
+    .heroContenido h1{
+
+        font-size:28px;
+
+    }
+
+    .btnPrincipal,
+
+    .btnSecundario{
+
+        padding:14px 18px;
+
+        font-size:14px;
+
+    }
+
+    .modalContenido{
+
+        padding:20px;
+
+    }
+
+    .modalHeader h2{
+
+        font-size:20px;
+
+    }
+
+    #formCompra input{
+
+        padding:12px;
+
+    }
+
+}
