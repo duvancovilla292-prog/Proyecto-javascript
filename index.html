@@ -7,22 +7,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EventPass | Inicio</title>
+    <title>EventPass | Compra tus entradas</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
@@ -34,7 +31,7 @@
 
         <div class="logo">
 
-            <img src="assets/img/logol.png" alt="Logo">
+            <img src="assets/img/logol.png" alt="EventPass">
 
             <h2>EventPass</h2>
 
@@ -44,9 +41,9 @@
 
             <a href="#">Inicio</a>
 
-            <a href="#eventos">Eventos</a>
-
             <a href="#categorias">Categorías</a>
+
+            <a href="#eventos">Eventos</a>
 
             <a href="#contacto">Contacto</a>
 
@@ -54,33 +51,25 @@
 
         <div class="acciones">
 
-            <div class="buscador">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <input
-                    type="text"
-                    id="buscarEvento"
-                    placeholder="Buscar eventos...">
-
-            </div>
-
-            <button class="btn-icono">
-
-                <i class="fa-regular fa-heart"></i>
-
-            </button>
-
-            <button class="btn-icono">
+            <button class="btnCarrito" id="abrirCarrito">
 
                 <i class="fa-solid fa-cart-shopping"></i>
 
+                <span id="contadorCarrito">
+
+                    0
+
+                </span>
+
             </button>
 
-            <img
-                src="assets/icono.png"
-                class="avatar"
-                alt="Usuario">
+            <a href="admin.html" class="btnLogin">
+
+                <i class="fa-solid fa-user-lock"></i>
+
+                Administrador
+
+            </a>
 
         </div>
 
@@ -90,30 +79,47 @@
 
     <section class="hero">
 
-        <div class="hero-info">
+        <div class="heroContenido">
+
+            <span class="etiqueta">
+
+                EVENTOS EN TODA COLOMBIA
+
+            </span>
 
             <h1>
 
-                Vive experiencias inolvidables
+                Vive la emoción de los mejores eventos
 
             </h1>
 
             <p>
 
-                Compra entradas para conciertos, festivales, teatro,
-                deportes y los mejores eventos de Colombia.
+                Compra entradas para conciertos,
+                festivales, teatro, deportes y experiencias
+                inolvidables de forma rápida y segura.
 
             </p>
 
-            <button class="btnPrincipal">
+            <div class="heroBotones">
 
-                Explorar Eventos
+                <button class="btnPrincipal">
 
-            </button>
+                    Comprar Entradas
+
+                </button>
+
+                <button class="btnSecundario">
+
+                    Explorar Eventos
+
+                </button>
+
+            </div>
 
         </div>
 
-        <div class="hero-imagen">
+        <div class="heroImagen">
 
             <img src="assets/img/banner.png" alt="Banner">
 
@@ -121,33 +127,113 @@
 
     </section>
 
+    <!--================ FILTROS ================-->
+
+
+
+    </section>
+
     <!--================ CATEGORÍAS ================-->
 
-    <section
-        class="seccion"
-        id="categorias">
+    <section class="filtros">
+
+        <!-- Buscador -->
+
+        <div class="buscador">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" id="buscarEvento" placeholder="Buscar evento...">
+
+        </div>
+
+        <!-- Ciudad -->
+
+        <div class="filtro">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <select id="filtroCiudad">
+
+                <option value="">Todas las ciudades</option>
+
+                <option>Bogotá</option>
+
+                <option>Medellín</option>
+
+                <option>Barranquilla</option>
+
+                <option>Bucaramanga</option>
+
+            </select>
+
+        </div>
+
+        <!-- Categoría -->
+
+        <div class="filtro">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <select id="filtroCategoria">
+
+                <option value="">Todas las categorías</option>
+
+                <option>Conciertos</option>
+
+                <option>Festivales</option>
+
+                <option>Teatro</option>
+
+                <option>Deportes</option>
+
+            </select>
+
+        </div>
+
+        <!-- Botón -->
+
+        <button class="btnPrincipal">
+
+            Buscar
+
+        </button>
+
+    </section>
+
+    <section class="seccion" id="categorias">
 
         <div class="tituloSeccion">
 
-            <h2>Categorías</h2>
+            <span>
+
+                EXPLORA
+
+            </span>
+
+            <h2>
+
+                Categorías Populares
+
+            </h2>
 
             <p>
 
-                Encuentra eventos según tus gustos.
+                Encuentra el evento perfecto para ti.
 
             </p>
 
         </div>
 
-        <div
-            class="categorias"
-            id="listaCategorias">
+        <div class="categorias">
 
             <article class="categoria">
 
                 <i class="fa-solid fa-music"></i>
 
                 <h3>Conciertos</h3>
+
+                <span>+120 Eventos</span>
 
             </article>
 
@@ -157,6 +243,8 @@
 
                 <h3>Teatro</h3>
 
+                <span>+45 Obras</span>
+
             </article>
 
             <article class="categoria">
@@ -164,6 +252,8 @@
                 <i class="fa-solid fa-futbol"></i>
 
                 <h3>Deportes</h3>
+
+                <span>+60 Eventos</span>
 
             </article>
 
@@ -173,6 +263,8 @@
 
                 <h3>Cine</h3>
 
+                <span>+35 Estrenos</span>
+
             </article>
 
             <article class="categoria">
@@ -181,7 +273,50 @@
 
                 <h3>Festivales</h3>
 
+                <span>+25 Festivales</span>
+
             </article>
+
+        </div>
+
+    </section>
+
+    <!--================ BANNER PROMOCIONAL ================-->
+
+    <section class="promo">
+
+        <div class="promoContenido">
+
+            <span>
+
+                EVENTO DESTACADO
+
+            </span>
+
+            <h2>
+
+                Festival Internacional de Música 2026
+
+            </h2>
+
+            <p>
+
+                Vive una experiencia única con artistas nacionales e internacionales.
+                Compra ahora y aprovecha los mejores precios.
+
+            </p>
+
+            <button class="btnPrincipal">
+
+                Comprar Ahora
+
+            </button>
+
+        </div>
+
+        <div class="promoImagen">
+
+            <img src="assets/img/promo.png" alt="Festival">
 
         </div>
 
@@ -189,31 +324,309 @@
 
     <!--================ EVENTOS ================-->
 
-    <section
-        class="seccion"
-        id="eventos">
+    <section class="seccion" id="eventos">
 
         <div class="tituloSeccion">
 
-            <h2>Eventos destacados</h2>
+            <div>
+
+                <span>
+
+                    DISPONIBLES
+
+                </span>
+
+                <h2>
+
+                    Eventos Destacados
+
+                </h2>
+
+            </div>
 
             <button class="btnSecundario">
 
-                Ver todos
+                Ver Todos
 
             </button>
 
         </div>
 
-        <div
-            class="gridEventos"
-            id="contenedorEventos">
+        <div class="gridEventos" id="contenedorEventos">
 
-            <!-- JS -->
+            <!-- TARJETA 1 -->
+
+            <article class="evento">
+
+                <img src="assets/img/evento1.jpg" alt="Evento">
+
+                <div class="contenidoEvento">
+
+                    <span class="categoriaEvento">
+
+                        Concierto
+
+                    </span>
+
+                    <h3>
+
+                        Coldplay Music Tour
+
+                    </h3>
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Bogotá
+
+                    </p>
+
+                    <p>
+
+                        <i class="fa-solid fa-calendar"></i>
+
+                        18 Octubre 2026
+
+                    </p>
+
+                    <div class="precio">
+
+                        <h2>
+
+                            $350.000
+
+                        </h2>
+
+                        <button>
+
+                            Comprar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- TARJETA 2 -->
+
+            <article class="evento">
+
+                <img src="assets/img/evento2.jpg" alt="Evento">
+
+                <div class="contenidoEvento">
+
+                    <span class="categoriaEvento">
+
+                        Festival
+
+                    </span>
+
+                    <h3>
+
+                        Festival Colors
+
+                    </h3>
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Medellín
+
+                    </p>
+
+                    <p>
+
+                        <i class="fa-solid fa-calendar"></i>
+
+                        10 Noviembre 2026
+
+                    </p>
+
+                    <div class="precio">
+
+                        <h2>
+
+                            $180.000
+
+                        </h2>
+
+                        <button>
+
+                            Comprar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- TARJETA 3 -->
+
+            <article class="evento">
+
+                <img src="assets/img/evento3.jpg" alt="Evento">
+
+                <div class="contenidoEvento">
+
+                    <span class="categoriaEvento">
+
+                        Deportes
+
+                    </span>
+
+                    <h3>
+
+                        Final Liga Colombiana
+
+                    </h3>
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Barranquilla
+
+                    </p>
+
+                    <p>
+
+                        <i class="fa-solid fa-calendar"></i>
+
+                        05 Diciembre 2026
+
+                    </p>
+
+                    <div class="precio">
+
+                        <h2>
+
+                            $210.000
+
+                        </h2>
+
+                        <button>
+
+                            Comprar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
 
         </div>
 
     </section>
+
+    <!--================ CARRITO DE COMPRAS ================-->
+
+    <div class="modal oculto" id="modalCarrito">
+
+        <div class="modalContenido carrito">
+
+            <div class="modalHeader">
+
+                <h2>
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Carrito de Compras
+
+                </h2>
+
+                <button id="cerrarCarrito">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <div id="listaCarrito">
+
+                <!-- Los productos se agregarán desde JavaScript -->
+
+            </div>
+
+            <div class="totalCompra">
+
+                <h3>
+
+                    Total:
+
+                </h3>
+
+                <h2 id="totalCompra">
+
+                    $0
+
+                </h2>
+
+            </div>
+
+            <button class="btnPrincipal" id="btnComprar">
+
+                Continuar Compra
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!--================ FORMULARIO COMPRA ================-->
+
+    <div class="modal oculto" id="modalCompra">
+
+        <div class="modalContenido">
+
+            <div class="modalHeader">
+
+                <h2>
+
+                    Finalizar Compra
+
+                </h2>
+
+                <button id="cerrarCompra">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <form id="formCompra">
+
+                <input type="text" id="identificacion" placeholder="Número de identificación" required>
+
+                <input type="text" id="nombreCliente" placeholder="Nombre completo" required>
+
+                <input type="text" id="direccion" placeholder="Dirección" required>
+
+                <input type="tel" id="telefono" placeholder="Teléfono" required>
+
+                <input type="email" id="correo" placeholder="Correo electrónico" required>
+
+                <button type="submit" class="btnPrincipal">
+
+                    Confirmar Compra
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
 
     <!--================ BENEFICIOS ================-->
 
@@ -223,11 +636,15 @@
 
             <i class="fa-solid fa-ticket"></i>
 
-            <h3>Entradas 100% digitales</h3>
+            <h3>
+
+                Entradas Digitales
+
+            </h3>
 
             <p>
 
-                Compra desde cualquier lugar.
+                Accede a tus boletas desde cualquier dispositivo.
 
             </p>
 
@@ -235,13 +652,35 @@
 
         <article>
 
-            <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-shield-halved"></i>
 
-            <h3>Pagos seguros</h3>
+            <h3>
+
+                Compra Segura
+
+            </h3>
 
             <p>
 
-                Tus compras están protegidas.
+                Tus datos y pagos están protegidos.
+
+            </p>
+
+        </article>
+
+        <article>
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+
+                Soporte 24/7
+
+            </h3>
+
+            <p>
+
+                Siempre estaremos disponibles para ayudarte.
 
             </p>
 
@@ -251,11 +690,15 @@
 
             <i class="fa-solid fa-bolt"></i>
 
-            <h3>Compra rápida</h3>
+            <h3>
+
+                Compra Rápida
+
+            </h3>
 
             <p>
 
-                En pocos clics obtienes tu entrada.
+                Obtén tus entradas en pocos minutos.
 
             </p>
 
@@ -269,21 +712,19 @@
 
         <h2>
 
-            No te pierdas ningún evento
+            Mantente informado
 
         </h2>
 
         <p>
 
-            Suscríbete y recibe promociones y novedades.
+            Recibe promociones, descuentos y conoce primero los nuevos eventos.
 
         </p>
 
         <div class="suscripcion">
 
-            <input
-                type="email"
-                placeholder="Correo electrónico">
+            <input type="email" placeholder="Ingresa tu correo electrónico">
 
             <button>
 
@@ -297,22 +738,21 @@
 
     <!--================ FOOTER ================-->
 
-    <footer
-        class="footer"
-        id="contacto">
+    <footer class="footer" id="contacto">
 
-        <div>
+        <div class="footerLogo">
 
-            <img
-                src="assets/logo.png"
-                alt="Logo"
-                width="70">
+            <img src="assets/img/logol.png" alt="EventPass">
 
-            <h3>VibraTickets</h3>
+            <h3>
+
+                EventPass
+
+            </h3>
 
             <p>
 
-                Tu entrada a los mejores eventos del país.
+                Compra entradas para los mejores eventos de Colombia de forma rápida y segura.
 
             </p>
 
@@ -320,45 +760,91 @@
 
         <div>
 
-            <h4>Enlaces</h4>
+            <h4>
+
+                Navegación
+
+            </h4>
 
             <a href="#">Inicio</a>
 
-            <a href="#">Eventos</a>
+            <a href="#categorias">Categorías</a>
 
-            <a href="#">Categorías</a>
+            <a href="#eventos">Eventos</a>
 
-        </div>
-
-        <div>
-
-            <h4>Contacto</h4>
-
-            <p>info@vibratickets.com</p>
-
-            <p>+57 300 123 4567</p>
+            <a href="#contacto">Contacto</a>
 
         </div>
 
         <div>
 
-            <h4>Síguenos</h4>
+            <h4>
+
+                Ciudades
+
+            </h4>
+
+            <p>Bogotá</p>
+
+            <p>Medellín</p>
+
+            <p>Barranquilla</p>
+
+            <p>Bucaramanga</p>
+
+        </div>
+
+        <div>
+
+            <h4>
+
+                Síguenos
+
+            </h4>
 
             <div class="redes">
 
-                <i class="fab fa-facebook-f"></i>
+                <a href="#">
 
-                <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook-f"></i>
 
-                <i class="fab fa-x-twitter"></i>
+                </a>
 
-                <i class="fab fa-youtube"></i>
+                <a href="#">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-x-twitter"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-youtube"></i>
+
+                </a>
 
             </div>
 
         </div>
 
     </footer>
+
+    <div class="copyright">
+
+        <p>
+
+            © 2026 EventPass. Todos los derechos reservados.
+
+        </p>
+
+    </div>
+
+    <!--================ JAVASCRIPT ================-->
 
     <script src="js/data-seed.js"></script>
     <script src="js/storage.js"></script>
