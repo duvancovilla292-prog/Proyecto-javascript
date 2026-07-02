@@ -1,180 +1,42 @@
-/*=========================================
-        STORAGE.JS
-        Manejo del LocalStorage
-=========================================*/
+const KEYS = {
+    EVENTOS: 'eventpass_eventos',
+    CARRITO: 'eventpass_carrito',
+    COMPRAS: 'eventpass_compras'
+};
 
-/**
- * Obtiene los datos almacenados en localStorage.
- * @param {string} clave
- * @returns {Array}
- */
-function obtenerDatos(clave) {
-    return JSON.parse(localStorage.getItem(clave)) || [];
-}
+export const StorageService = {
+    get(key) {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : [];
+    },
 
-/**
- * Guarda datos en localStorage.
- * @param {string} clave
- * @param {Array} datos
- */
-function guardarDatos(clave, datos) {
-    localStorage.setItem(clave, JSON.stringify(datos));
-}
+    set(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    },
 
-/*=========================================
-                EVENTOS
-=========================================*/
+    // --- GESTIÓN DE EVENTOS ---
+    getEventos() {
+        return this.get(KEYS.EVENTOS);
+    },
+    saveEventos(eventos) {
+        this.set(KEYS.EVENTOS, eventos);
+    },
 
-/**
- * Retorna todos los eventos.
- */
-function obtenerEventos() {
-    return obtenerDatos("eventos");
-}
+    // --- GESTIÓN DEL CARRITO ---
+    getCarrito() {
+        return this.get(KEYS.CARRITO);
+    },
+    saveCarrito(carrito) {
+        this.set(KEYS.CARRITO, carrito);
+    },
 
-/**
- * Guarda el arreglo de eventos.
- */
-function guardarEventos(eventos) {
-    guardarDatos("eventos", eventos);
-}
-
-/**
- * Agrega un evento.
- */
-function agregarEvento(evento) {
-    const eventos = obtenerEventos();
-    eventos.push(evento);
-    guardarEventos(eventos);
-}
-
-/**
- * Actualiza un evento.
- */
-function actualizarEvento(eventoActualizado) {
-
-    const eventos = obtenerEventos();
-
-    const indice = eventos.findIndex(
-        evento => evento.id === eventoActualizado.id
-    );
-
-    if (indice !== -1) {
-        eventos[indice] = eventoActualizado;
-        guardarEventos(eventos);
+    // --- GESTIÓN DE COMPRAS (DASHBOARD) ---
+    getCompras() {
+        return this.get(KEYS.COMPRAS);
+    },
+    saveCompra(nuevaCompra) {
+        const compras = this.get(KEYS.COMPRAS);
+        compras.push(nuevaCompra);
+        this.set(KEYS.COMPRAS, compras);
     }
-}
-
-/**
- * Elimina un evento.
- */
-function eliminarEvento(id) {
-
-    const eventos = obtenerEventos().filter(
-        evento => evento.id !== id
-    );
-
-    guardarEventos(eventos);
-}
-
-/**
- * Busca un evento por ID.
- */
-function buscarEventoPorId(id) {
-    return obtenerEventos().find(
-        evento => evento.id === id
-    );
-}
-
-/*=========================================
-            CATEGORÍAS
-=========================================*/
-
-function obtenerCategorias() {
-    return obtenerDatos("categorias");
-}
-
-function guardarCategorias(categorias) {
-    guardarDatos("categorias", categorias);
-}
-
-/*=========================================
-                USUARIOS
-=========================================*/
-
-function obtenerUsuarios() {
-    return obtenerDatos("usuarios");
-}
-
-function guardarUsuarios(usuarios) {
-    guardarDatos("usuarios", usuarios);
-}
-
-/**
- * Busca un usuario por correo.
- */
-function buscarUsuario(correo) {
-    return obtenerUsuarios().find(
-        usuario => usuario.correo === correo
-    );
-}
-
-/*=========================================
-                VENTAS
-=========================================*/
-
-function obtenerVentas() {
-    return obtenerDatos("ventas");
-}
-
-function guardarVentas(ventas) {
-    guardarDatos("ventas", ventas);
-}
-
-function agregarVenta(venta) {
-    const ventas = obtenerVentas();
-    ventas.push(venta);
-    guardarVentas(ventas);
-}
-
-/*=========================================
-            ESTADÍSTICAS
-=========================================*/
-
-function totalEventos() {
-    return obtenerEventos().length;
-}
-
-function totalCategorias() {
-    return obtenerCategorias().length;
-}
-
-function totalVentas() {
-    return obtenerVentas().length;
-}
-
-function ingresosTotales() {
-
-    const ventas = obtenerVentas();
-
-    return ventas.reduce(
-        (total, venta) => total + venta.total,
-        0
-    );
-}
-
-/*=========================================
-                UTILIDADES
-=========================================*/
-
-/**
- * Genera un nuevo ID consecutivo.
- */
-function generarId(lista) {
-
-    if (lista.length === 0) {
-        return 1;
-    }
-
-    return Math.max(...lista.map(item => item.id)) + 1;
-}
+};
