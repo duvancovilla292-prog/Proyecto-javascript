@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EventPass | Carrito de Compras</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <link rel="stylesheet" href="/css/carrito.css">
+
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!--================ HEADER ================-->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <img src="assets/img/logol.png" alt="EventPass">
+
+            <h2>EventPass</h2>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="index.html">
+
+                Inicio
+
+            </a>
+
+            <a href="index.html#eventos">
+
+                Eventos
+
+            </a>
+
+            <a href="index.html#categorias">
+
+                Categorías
+
+            </a>
+
+            <a href="index.html#contacto">
+
+                Contacto
+
+            </a>
+
+        </nav>
+
+        <div class="acciones">
+
+            <a href="index.html" class="btnSecundario">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Seguir Comprando
+
+            </a>
+
+        </div>
+
+    </header>
+
+    <!--================ HERO ================-->
+
+    <section class="hero carritoHero">
+
+        <div class="heroContenido">
+
+            <span>
+
+                CARRITO DE COMPRAS
+
+            </span>
+
+            <h1>
+
+                Tus eventos seleccionados
+
+            </h1>
+
+            <p>
+
+                Revisa los eventos agregados a tu carrito,
+                modifica la cantidad de entradas y continúa
+                con el proceso de compra de forma segura.
+
+            </p>
+
+        </div>
+
+        <div class="heroImagen">
+
+            <img src="assets/img/carrito.png" alt="Carrito">
+
+        </div>
+
+    </section>
+
+    <!--================ CONTENIDO ================-->
+
+    <main class="contenedorCarrito">
+
+        <!--================ EVENTOS ================-->
+
+        <section class="listaEventosCarrito">
+
+            <div class="tituloSeccion">
+
+                <div>
+
+                    <span>
+
+                        TUS ENTRADAS
+
+                    </span>
+
+                    <h2>
+
+                        Eventos Agregados
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div id="listaCarrito">
+
+                <!--================ ITEM =================-->
+
+                <article class="itemCarrito">
+
+                    <img src="assets/img/evento1.jpg" alt="Evento">
+
+                    <div class="infoEvento">
+
+                        <h3>
+
+                            Festival Rock Colombia
+
+                        </h3>
+
+                        <p>
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            Bogotá
+
+                        </p>
+
+                        <p>
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                            20 Julio 2026
+
+                        </p>
+
+                        <h4>
+
+                            $120.000
+
+                        </h4>
+
+                    </div>
+
+                    <div class="cantidadEntradas">
+
+                        <button>
+
+                            <i class="fa-solid fa-minus"></i>
+
+                        </button>
+
+                        <span>
+
+                            1
+
+                        </span>
+
+                        <button>
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="subtotalEvento">
+
+                        <h3>
+
+                            $120.000
+
+                        </h3>
+
+                    </div>
+
+                    <button class="eliminarEvento">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </article>
+
+                <!-- Los demás eventos se agregarán aquí dinámicamente -->
+
+            </div>
+
+        </section>
+
+        <!--================ RESUMEN =================-->
+
+        <aside class="resumenCompra">
+
+            <div class="cardResumen">
+
+                <h2>
+
+                    Resumen de Compra
+
+                </h2>
+
+                <hr>
+
+                <div class="detalleResumen">
+
+                    <span>
+
+                        Eventos
+
+                    </span>
+
+                    <span id="cantidadEventos">
+
+                        1
+
+                    </span>
+
+                </div>
+
+                <div class="detalleResumen">
+
+                    <span>
+
+                        Entradas
+
+                    </span>
+
+                    <span id="cantidadEntradas">
+
+                        1
+
+                    </span>
+
+                </div>
+
+                <div class="detalleResumen">
+
+                    <span>
+
+                        Subtotal
+
+                    </span>
+
+                    <span id="subtotal">
+
+                        $120.000
+
+                    </span>
+
+                </div>
+
+                <div class="detalleResumen">
+
+                    <span>
+
+                        Cargo por servicio
+
+                    </span>
+
+                    <span id="servicio">
+
+                        $5.000
+
+                    </span>
+
+                </div>
+
+                <div class="detalleResumen total">
+
+                    <span>
+
+                        Total
+
+                    </span>
+
+                    <span id="total">
+
+                        $125.000
+
+                    </span>
+
+                </div>
+
+                <button class="btnPrincipal" id="btnContinuar">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    Proceder al Pago
+
+                </button>
+
+                <button class="btnSecundario" id="btnVaciar">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    Vaciar Carrito
+
+                </button>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!--================ FORMULARIO =================-->
+
+    <section class="formularioCompra">
+
+        <div class="tituloSeccion">
+
+            <div>
+
+                <span>
+
+                    FINALIZAR COMPRA
+
+                </span>
+
+                <h2>
+
+                    Información del Comprador
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <form id="formCompra">
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Nombre Completo
+
+                </label>
+
+                <input type="text" id="nombre" placeholder="Ingrese su nombre" required>
+
+            </div>
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Correo Electrónico
+
+                </label>
+
+                <input type="email" id="correo" placeholder="correo@email.com" required>
+
+            </div>
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Teléfono
+
+                </label>
+
+                <input type="tel" id="telefono" placeholder="3001234567" required>
+
+            </div>
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Documento
+
+                </label>
+
+                <input type="number" id="documento" placeholder="Número de documento" required>
+
+            </div>
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Método de Pago
+
+                </label>
+
+                <select id="metodoPago">
+
+                    <option value="">
+
+                        Seleccione...
+
+                    </option>
+
+                    <option>
+
+                        Tarjeta Crédito
+
+                    </option>
+
+                    <option>
+
+                        Tarjeta Débito
+
+                    </option>
+
+                    <option>
+
+                        PSE
+
+                    </option>
+
+                    <option>
+
+                        Nequi
+
+                    </option>
+
+                    <option>
+
+                        Daviplata
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="grupoInput">
+
+                <label>
+
+                    Observaciones
+
+                </label>
+
+                <textarea id="observaciones" placeholder="Escriba aquí si tiene alguna observación..."></textarea>
+
+            </div>
+
+
+            <div class="accionesFormulario">
+
+                <button type="reset" class="btnSecundario">
+
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+
+                    Limpiar
+
+                </button>
+
+                <button type="submit" class="btnPrincipal">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Confirmar Compra
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <!--================ BENEFICIOS =================-->
+
+    <section class="beneficios">
+
+        <article>
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+
+                Compra Segura
+
+            </h3>
+
+            <p>
+
+                Todas las transacciones están protegidas
+                mediante protocolos de seguridad para
+                garantizar la protección de tus datos.
+
+            </p>
+
+        </article>
+
+        <article>
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <h3>
+
+                Entradas Digitales
+
+            </h3>
+
+            <p>
+
+                Recibe tus entradas inmediatamente
+                después de confirmar el pago en tu
+                correo electrónico.
+
+            </p>
+
+        </article>
+
+        <article>
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+
+                Soporte 24/7
+
+            </h3>
+
+            <p>
+
+                Nuestro equipo de soporte está
+                disponible para ayudarte en cualquier
+                momento.
+
+            </p>
+
+        </article>
+
+    </section>
+
+    <!--================ FOOTER =================-->
+
+    <footer class="footer">
+
+        <div class="footerLogo">
+
+            <img src="assets/img/logol.png" alt="EventPass">
+
+            <h3>
+
+                EventPass
+
+            </h3>
+
+            <p>
+
+                Compra entradas para los mejores
+                conciertos, festivales, deportes
+                y espectáculos del país.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <h4>
+
+                Navegación
+
+            </h4>
+
+            <a href="index.html">
+
+                Inicio
+
+            </a>
+
+            <a href="index.html#eventos">
+
+                Eventos
+
+            </a>
+
+            <a href="index.html#categorias">
+
+                Categorías
+
+            </a>
+
+        </div>
+
+        <div>
+
+            <h4>
+
+                Ayuda
+
+            </h4>
+
+            <a href="#">
+
+                Preguntas Frecuentes
+
+            </a>
+
+            <a href="#">
+
+                Políticas
+
+            </a>
+
+            <a href="#">
+
+                Contacto
+
+            </a>
+
+        </div>
+
+        <div>
+
+            <h4>
+
+                Síguenos
+
+            </h4>
+
+            <div class="redes">
+
+                <a href="#">
+
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-x-twitter"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-youtube"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <div class="copyright">
+
+        © 2026 EventPass. Todos los derechos reservados.
+
+    </div>
+
+    <!--================ JAVASCRIPT =================-->
+
+    <script src="js/storage.js"></script>
+
+    <script src="js/carrito.js"></script>
+
+</body>
+
+</html>
