@@ -1,15 +1,20 @@
 class EventoCard extends HTMLElement {
-    connectedCallback() {
-        const codigo = this.getAttribute('codigo') || '';
-        const nombre = this.getAttribute('nombre') || '';
-        const categoria = this.getAttribute('categoria') || '';
-        const ciudad = this.getAttribute('ciudad') || '';
-        const fecha = this.getAttribute('fecha') || '';
-        const precio = Number(this.getAttribute('precio')) || 0;
-        const imagen = this.getAttribute('imagen') || 'assets/img/evento1.jpg';
+    constructor() {
+        super();
+    }
 
+    connectedCallback() {
+        const codigo = this.getAttribute('codigo');
+        const nombre = this.getAttribute('nombre');
+        const categoria = this.getAttribute('categoria');
+        const ciudad = this.getAttribute('ciudad');
+        const fecha = this.getAttribute('fecha');
+        const precio = Number(this.getAttribute('precio'));
+        const imagen = this.getAttribute('imagen');
+
+        // Estructura HTML idéntica a tus tarjetas del index_3.html
         this.innerHTML = `
-            <article class="evento">
+            <article class="evento" data-codigo="${codigo}">
                 <img src="${imagen}" alt="${nombre}">
                 <div class="contenidoEvento">
                     <span class="categoriaEvento">${categoria}</span>
@@ -18,20 +23,23 @@ class EventoCard extends HTMLElement {
                     <p><i class="fa-solid fa-calendar"></i> ${fecha}</p>
                     <div class="precio">
                         <h2>$${precio.toLocaleString('es-CO')}</h2>
-                        <button class="btnAgregar" data-codigo="${codigo}">Comprar</button>
+                        <button class="btnAgregarCarrito">Comprar</button>
                     </div>
                 </div>
             </article>
         `;
 
-        // Lógica de escucha interna para añadir al carrito
-        this.querySelector('.btnAgregar').addEventListener('click', () => {
-            this.dispatchEvent(new CustomEvent('agregar-carrito', {
+        // Configurar el evento del botón Comprar
+        this.querySelector('.btnAgregarCarrito').addEventListener('click', () => {
+            const eventoCarrito = new CustomEvent('agregar-carrito', {
+                detail: { codigo, nombre, precio, imagen },
                 bubbles: true,
-                detail: { codigo, nombre, precio, imagen }
-            }));
+                composed: true
+            });
+            this.dispatchEvent(eventoCarrito);
         });
     }
 }
 
+// Registrar el componente en el navegador
 customElements.define('evento-card', EventoCard);

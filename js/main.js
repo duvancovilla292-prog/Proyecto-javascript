@@ -2,7 +2,7 @@ import { StorageService } from './storage.js';
 import { DataSeed } from './data-seed.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    DataSeed.init();
+    await DataSeed.init(); 
 
     // Referencias DOM - Interfaz General
     const contenedorEventos = document.getElementById('contenedorEventos');

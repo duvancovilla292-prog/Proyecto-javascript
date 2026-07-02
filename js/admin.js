@@ -1,6 +1,10 @@
 import { StorageService } from './storage.js';
+import { DataSeed } from './data-seed.js'; // Asegúrate de importar DataSeed en admin.js también
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Si entran directo al admin por URL sin pasar por el index, esto previene tablas vacías
+    await DataSeed.init(); 
+
     const listaEventos = document.getElementById('listaEventos');
     const buscarAdmin = document.getElementById('buscarAdmin');
     const formEvento = document.getElementById('formEvento');
