@@ -1,5 +1,7 @@
 // 1. Objeto con las credenciales del usuario por defecto (No va a cambiar)
 const USUARIO_CREDENTIALS = {
+    nombre1: "admin",
+    nombre2: "Brayan",
     nombre: "Ciel",
     correo: "admin@gmail.com",
     clave: "123456"
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const passwordIngresada = inputPassword.value;
 
         // Validar si coincide con el nombre o con el correo, y que la clave sea correcta
-        if ((usuarioIngresado === USUARIO_CREDENTIALS.nombre || usuarioIngresado === USUARIO_CREDENTIALS.correo) && 
+        if ((usuarioIngresado === USUARIO_CREDENTIALS.nombre || usuarioIngresado === USUARIO_CREDENTIALS.correo || usuarioIngresado === USUARIO_CREDENTIALS.nombre1 || usuarioIngresado === USUARIO_CREDENTIALS.nombre2) && 
             passwordIngresada === USUARIO_CREDENTIALS.clave) {
             
             // Mensaje de éxito
