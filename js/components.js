@@ -11,12 +11,11 @@ class EventoCard extends HTMLElement {
         const fecha = this.getAttribute('fecha');
         const precio = Number(this.getAttribute('precio'));
         const imagen = this.getAttribute('imagen');
-        //${imagen}
-
+        //
         // Estructura HTML idéntica a tus tarjetas del index_3.html
         this.innerHTML = `
             <article class="evento" data-codigo="${codigo}">
-                <img src="assets/img/Preva.jpeg" alt="${nombre}">
+                <img src="${imagen}" alt="${nombre}">
                 <div class="contenidoEvento">
                     <span class="categoriaEvento">${categoria}</span>
                     <h3>${nombre}</h3>
