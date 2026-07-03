@@ -23,7 +23,7 @@ class EventoCard extends HTMLElement {
                     <p><i class="fa-solid fa-calendar"></i> ${fecha}</p>
                     <div class="precio">
                         <h2>$${precio.toLocaleString('es-CO')}</h2>
-                        <button class="btnAgregarCarrito">Comprar</button>
+                        <button class="btnAgregarCarrito">Añadir al carrito</button>
                     </div>
                 </div>
             </article>
