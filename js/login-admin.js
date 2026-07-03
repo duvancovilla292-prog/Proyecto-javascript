@@ -3,7 +3,7 @@ const USUARIO_CREDENTIALS = {
     nombre1: "admin",
     nombre2: "Brayan",
     nombre: "Ciel",
-    correo: "admin@gmail.com",
+    correo: "admin@mail.com",
     clave: "123456"
 };
 
