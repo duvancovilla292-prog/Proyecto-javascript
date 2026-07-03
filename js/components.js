@@ -16,7 +16,7 @@ class EventoCard extends HTMLElement {
         // Estructura HTML idéntica a tus tarjetas del index_3.html
         this.innerHTML = `
             <article class="evento" data-codigo="${codigo}">
-                <img src="../assets/img/Preva.jpeg" alt="${nombre}">
+                <img src="assets/img/Preva.jpeg" alt="${nombre}">
                 <div class="contenidoEvento">
                     <span class="categoriaEvento">${categoria}</span>
                     <h3>${nombre}</h3>
