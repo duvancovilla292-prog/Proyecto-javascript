@@ -1,8 +1,8 @@
 // 1. Objeto con las credenciales del usuario por defecto (No va a cambiar)
 const USUARIO_CREDENTIALS = {
     nombre: "Ciel",
-    correo: "ciel@eventpass.com",
-    clave: "admin1234"
+    correo: "admin@gmail.com",
+    clave: "123456"
 };
 
 // 2. Esperar a que el DOM esté completamente cargado
