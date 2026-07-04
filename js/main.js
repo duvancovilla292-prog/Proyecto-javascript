@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         filtrados.forEach(ev => {
             const card = document.createElement('evento-card');
-            card.setAttribute('codigo', ev.codigo);
-            card.setAttribute('nombre', ev.nombre);
-            card.setAttribute('categoria', ev.categoria);
-            card.setAttribute('ciudad', ev.ciudad);
-            card.setAttribute('fecha', ev.fecha);
-            card.setAttribute('precio', ev.precio);
-            card.setAttribute('imagen', ev.imagen);
+            card.setAttribute('codigo', ev.codigo || '');
+            card.setAttribute('nombre', ev.nombre || '');
+            card.setAttribute('categoria', ev.categoria || '');
+            card.setAttribute('ciudad', ev.ciudad || '');
+            card.setAttribute('fecha', ev.fecha || '');
+            card.setAttribute('precio', ev.precio || '');
+            card.setAttribute('imagen', ev.imagen || '');
             card.setAttribute('hora', ev.hora || '');
             card.setAttribute('descripcion', ev.descripcion || '');
             contenedorEventos.appendChild(card);
