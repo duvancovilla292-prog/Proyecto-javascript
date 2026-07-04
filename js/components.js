@@ -9,6 +9,8 @@ class EventoCard extends HTMLElement {
         const categoria = this.getAttribute('categoria');
         const ciudad = this.getAttribute('ciudad');
         const fecha = this.getAttribute('fecha');
+        const hora = this.getAttribute('hora');
+        const descripcion = this.getAttribute('descripcion');
         const precio = Number(this.getAttribute('precio'));
         const imagen = this.getAttribute('imagen');
         //
@@ -20,7 +22,8 @@ class EventoCard extends HTMLElement {
                     <span class="categoriaEvento">${categoria}</span>
                     <h3>${nombre}</h3>
                     <p><i class="fa-solid fa-location-dot"></i> ${ciudad}</p>
-                    <p><i class="fa-solid fa-calendar"></i> ${fecha}</p>
+                    <p><i class="fa-solid fa-calendar"></i> ${fecha} a las ${hora} </p>
+                    <p>${descripcion}</p>
                     <div class="precio">
                         <h2>$${precio.toLocaleString('es-CO')}</h2>
                         <button class="btnAgregarCarrito">Añadir al carrito</button>

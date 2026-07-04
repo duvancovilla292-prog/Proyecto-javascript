@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.setAttribute('fecha', ev.fecha);
             card.setAttribute('precio', ev.precio);
             card.setAttribute('imagen', ev.imagen);
+            card.setAttribute('hora', ev.hora || '');
+            card.setAttribute('descripcion', ev.descripcion || '');
             contenedorEventos.appendChild(card);
         });
     }
