@@ -290,19 +290,6 @@
 
     }
 
-    .suscripcion{
-
-        flex-direction:column;
-
-    }
-
-    .suscripcion input,
-
-    .suscripcion button{
-
-        width:100%;
-
-    }
 
     /* FOOTER */
 

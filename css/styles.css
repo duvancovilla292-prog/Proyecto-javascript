@@ -1221,47 +1221,6 @@ select {
 
 }
 
-.suscripcion {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-
-}
-
-.suscripcion input {
-
-    width: 380px;
-
-    max-width: 100%;
-
-    padding: 16px;
-
-    border: none;
-
-    outline: none;
-
-    border-radius: 40px;
-
-}
-
-.suscripcion button {
-
-    padding: 16px 30px;
-
-    border-radius: 40px;
-
-    color: white;
-
-    background: linear-gradient(90deg,
-            var(--primary),
-            var(--secondary));
-
-}
 
 /*==================================================
                     FOOTER
