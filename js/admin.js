@@ -1,10 +1,16 @@
+// Importamos los módulos de almacenamiento y el semillero de datos iniciales
 import { StorageService } from './storage.js';
-import { DataSeed } from './data-seed.js'; // Asegúrate de importar DataSeed en admin.js también
+import { DataSeed } from './data-seed.js'; 
 
+// Escuchamos la carga del HTML de manera asíncrona para poder usar peticiones de red 'await'
 document.addEventListener('DOMContentLoaded', async () => {
-    // Si entran directo al admin por URL sin pasar por el index, esto previene tablas vacías
+    
+    // Garantizamos que si entran directo al panel por URL, los 100 eventos base se carguen al LocalStorage de inmediato
     await DataSeed.init();
 
+    // ====================
+    // CAPTURA DE COMPONENTES DEL DOM
+    // ====================
     const listaEventos = document.getElementById('listaEventos');
     const buscarAdmin = document.getElementById('buscarAdmin');
     const formEvento = document.getElementById('formEvento');
@@ -19,17 +25,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const totalEntradasTxt = document.getElementById('totalEntradas');
     const ingresosTxt = document.getElementById('ingresos');
 
-    // Variable de control para el modo edición
+    // VARIABLE LLAVE CONTROL: Si vale null estamos creando un evento. Si guarda un texto, estamos editando ese código.
     let editandoCodigo = null;
 
-    // --- CARGAR DEPARTAMENTOS EN EL SELECT DE CREACIÓN ---
+    // ====================
+    // FUNCIÓN: cargarDepartamentosAdmin()
+    // ====================
+    // Conecta con una API de internet real para traer los departamentos oficiales de Colombia al formulario
     async function cargarDepartamentosAdmin() {
-        if (!selectCiudadAdmin) return;
+        if (!selectCiudadAdmin) return; // Control de seguridad: Si el select no está en pantalla, cancela la ejecución
         try {
             const respuesta = await fetch('https://api-colombia.com/api/v1/Department');
-            if (!respuesta.ok) throw new Error('Error en Admin API');
+            if (!respuesta.ok) throw new Error('Error en Admin API'); // Si el servidor externo falla, salta al catch
 
-            const departamentos = await respuesta.json();
+            const departamentos = await respuesta.json(); // Convierte los datos recibidos a arreglos de JS
+            
+            // Ordena alfabéticamente de la A a la Z usando localeCompare para respetar tildes y caracteres especiales
             departamentos.sort((a, b) => a.name.localeCompare(b.name));
 
             selectCiudadAdmin.innerHTML = '<option value="" disabled selected>Selecciona un Departamento</option>';
@@ -41,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         } catch (error) {
             console.error(error);
+            // RESPALDO DE SEGURIDAD (FALLBACK): Si el internet falla, inyecta estas opciones por defecto para que la app siga operativa
             selectCiudadAdmin.innerHTML = `
                 <option value="Cundinamarca">Cundinamarca</option>
                 <option value="Antioquia">Antioquia</option>
@@ -49,37 +61,50 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    // ====================
+    // FUNCIÓN: actualizarDashboard()
+    // ====================
+    // Realiza los cálculos matemáticos automáticos para actualizar las 4 tarjetas de estadísticas superiores
     function actualizarDashboard() {
-        const eventos = StorageService.getEventos();
-        const compras = StorageService.getCompras();
+        const eventos = StorageService.getEventos(); // Lee los eventos vigentes
+        const compras = StorageService.getCompras(); // Lee el historial completo de ventas
 
-        const categoriasUnicas = [...new Set(eventos.map(ev => ev.categoria))].filter(c => c !== "");
+        // Extrae categorías únicas filtrando textos vacíos y eliminando duplicados usando 'new Set()'
+        const categoriesUnicas = [...new Set(eventos.map(ev => ev.categoria))].filter(c => c !== "");
         let totalEntradas = 0;
         let totalIngresos = 0;
 
+        // Recorremos cada compra y sumamos los productos adquiridos por los clientes
         compras.forEach(c => {
-            c.productos.forEach(p => totalEntradas += p.cantidad);
-            totalIngresos += c.total;
+            c.productos.forEach(p => totalEntradas += p.cantidad); // Suma las unidades físicas vendidas
+            totalIngresos += c.total; // Acumula el dinero total recaudado
         });
 
+        // Pintamos los resultados numéricos directamente en las tarjetas analíticas de la interfaz
         if (totalEventosTxt) totalEventosTxt.textContent = eventos.length;
-        if (totalCategoriasTxt) totalCategoriasTxt.textContent = categoriasUnicas.length;
+        if (totalCategoriasTxt) totalCategoriasTxt.textContent = categoriesUnicas.length;
         if (totalEntradasTxt) totalEntradasTxt.textContent = totalEntradas;
         if (ingresosTxt) ingresosTxt.textContent = `$${totalIngresos.toLocaleString('es-CO')}`;
     }
 
+    // ====================
+    // FUNCIÓN: renderTablaAdmin()
+    // ====================
+    // Dibuja en pantalla la lista de todos los eventos con sus botones para Modificar o Eliminar
     function renderTablaAdmin() {
         if (!listaEventos) return;
         const eventos = StorageService.getEventos();
         const busqueda = buscarAdmin ? buscarAdmin.value.toLowerCase() : "";
 
-        listaEventos.innerHTML = '';
+        listaEventos.innerHTML = ''; // Limpiamos las filas viejas del HTML antes de redibujar
 
+        // Filtramos en tiempo real comparando por nombre o por código único del show
         const filtrados = eventos.filter(ev =>
             ev.nombre.toLowerCase().includes(busqueda) ||
             ev.codigo.toLowerCase().includes(busqueda)
         );
 
+        // Generamos dinámicamente las filas <tr> correspondientes con interpolación de strings
         filtrados.forEach(ev => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
@@ -90,6 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td>${ev.fecha}</td>
                 <td><strong>$${Number(ev.precio).toLocaleString('es-CO')}</strong></td>
                 <td>
+                    <!-- Guardamos el código del evento dentro del atributo 'data-codigo' para saber exactamente cuál editar o borrar -->
                     <button class="btnEditar" data-codigo="${ev.codigo}" style="background:none; border:none; color:#3498db; cursor:pointer; margin-right: 10px;">
                         <i class="fa-solid fa-pen-to-square" data-codigo="${ev.codigo}"></i>
                     </button>
@@ -101,13 +127,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             listaEventos.appendChild(tr);
         });
 
-        actualizarDashboard();
+        actualizarDashboard(); // Recalcula las métricas del panel cada vez que la tabla sufre cambios
     }
 
+    // ====================
+    // EVENTO: PROCESAR FORMULARIO (SUBMIT)
+    // ====================
     if (formEvento) {
         formEvento.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Detiene el refresco automático de la página
 
+            // Empaquetamos toda la información ingresada por el administrador en un objeto estructurado
             const datosEvento = {
                 codigo: document.getElementById('codigo').value,
                 nombre: document.getElementById('nombre').value,
@@ -115,65 +145,70 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ciudad: document.getElementById('ciudad').value,
                 fecha: document.getElementById('fecha').value,
                 hora: document.getElementById('hora').value,
-                precio: Number(document.getElementById('precio').value) || 0,
-                imagen: document.getElementById('imagen').value || 'assets/img/evento1.jpg',
+                precio: Number(document.getElementById('precio').value) || 0, // Validamos conversión numérica limpia
+                imagen: document.getElementById('imagen').value || 'assets/img/evento1.jpg', // Imagen de respaldo por defecto
                 descripcion: document.getElementById('descripcion').value
             };
 
             let eventos = StorageService.getEventos();
 
+            // DETERMINACIÓN DE FLUJO: ¿Estamos guardando una edición o un evento totalmente nuevo?
             if (editandoCodigo) {
-                // Modo Edición
+                // MODO EDICIÓN: Recorre la lista; si encuentra el código modificado reemplaza el objeto viejo por 'datosEvento'
                 eventos = eventos.map(ev => ev.codigo === editandoCodigo ? datosEvento : ev);
                 StorageService.saveEventos(eventos);
-                editandoCodigo = null;
-                document.getElementById('codigo').disabled = false;
+                editandoCodigo = null; // Reinicia la variable de control a su estado por defecto
+                document.getElementById('codigo').disabled = false; // Desbloquea el campo del código
             } else {
-                // Modo Creación
+                // MODO CREACIÓN: Valida con .some() que el código nuevo no esté repetido en el sistema
                 if (eventos.some(ev => ev.codigo === datosEvento.codigo)) return alert('Código duplicado.');
-                eventos.push(datosEvento);
+                eventos.push(datosEvento); // Agrega el objeto al final del arreglo
                 StorageService.saveEventos(eventos);
             }
 
-            formEvento.reset();
-            modalEvento.classList.add('oculto');
+            formEvento.reset(); // Limpia todas las cajas de texto del formulario automáticamente
+            modalEvento.classList.add('oculto'); // Oculta la ventana modal del formulario
             
-            // Reestablecer título del modal en caso de haberlo cambiado
             const tituloModal = modalEvento.querySelector('h2');
-            if (tituloModal) tituloModal.textContent = 'Nuevo Evento';
+            if (tituloModal) tituloModal.textContent = 'Nuevo Evento'; // Reestablece el título original
 
-            renderTablaAdmin();
+            renderTablaAdmin(); // Redibuja de inmediato la tabla para reflejar los cambios
         });
     }
 
+    // ====================
+    // EVENTO DELEGADO: CLIC EN ACCIONES DE LA TABLA
+    // ====================
     if (listaEventos) {
         listaEventos.addEventListener('click', (e) => {
-            // Manejar click en Eliminar
+            // DETECTAR EL BOTÓN ELIMINAR: .closest() busca el botón padre aunque el usuario pulse exactamente encima del ícono
             const btnEliminar = e.target.closest('.btnEliminar');
             if (btnEliminar) {
                 const codigo = btnEliminar.getAttribute('data-codigo');
                 if (codigo && confirm(`¿Eliminar evento ${codigo}?`)) {
                     let eventos = StorageService.getEventos();
+                    // Filtra la lista excluyendo permanentemente el evento seleccionado
                     eventos = eventos.filter(ev => ev.codigo !== codigo);
                     StorageService.saveEventos(eventos);
-                    renderTablaAdmin();
+                    renderTablaAdmin(); // Refresca los cambios en la pantalla
                 }
-                return;
+                return; // Corta el flujo para evitar que evalúe la condición de editar accidentalmente
             }
 
-            // Manejar click en Editar
+            // DETECTAR EL BOTÓN EDITAR
             const btnEditar = e.target.closest('.btnEditar');
             if (btnEditar) {
                 const codigo = btnEditar.getAttribute('data-codigo');
                 const eventos = StorageService.getEventos();
+                // Busca el evento exacto que coincida con el código de la fila usando .find()
                 const eventoAEditar = eventos.find(ev => ev.codigo === codigo);
 
                 if (eventoAEditar) {
-                    editandoCodigo = codigo;
+                    editandoCodigo = codigo; // Bloquea la bandera de control guardando el código bajo edición
 
-                    // Rellenar el formulario
+                    // Rellena exhaustivamente cada una de las cajas del formulario con los valores actuales del show
                     document.getElementById('codigo').value = eventoAEditar.codigo;
-                    document.getElementById('codigo').disabled = true; // No permitir cambiar código
+                    document.getElementById('codigo').disabled = true; // REGLA CRÍTICA: No permitimos alterar el código identificador
                     document.getElementById('nombre').value = eventoAEditar.nombre;
                     document.getElementById('categoria').value = eventoAEditar.categoria;
                     document.getElementById('ciudad').value = eventoAEditar.ciudad;
@@ -184,19 +219,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                     document.getElementById('descripcion').value = eventoAEditar.descripcion || '';
 
                     const tituloModal = modalEvento.querySelector('h2');
-                    if (tituloModal) tituloModal.textContent = 'Editar Evento';
+                    if (tituloModal) tituloModal.textContent = 'Editar Evento'; // Cambia el aspecto estético del encabezado
 
-                    modalEvento.classList.remove('oculto');
+                    modalEvento.classList.remove('oculto'); // Muestra la ventana en pantalla
                 }
             }
         });
     }
 
+    // ====================
+    // CONTROL DE VENTANAS MODALES (ABRIR / CERRAR)
+    // ====================
     if (btnNuevoEvento) {
         btnNuevoEvento.addEventListener('click', () => {
-            editandoCodigo = null;
+            editandoCodigo = null; // Nos aseguramos de estar limpios en modo creación
             formEvento.reset();
-            document.getElementById('codigo').disabled = false;
+            document.getElementById('codigo').disabled = false; // El código debe ser editable si es nuevo
             
             const tituloModal = modalEvento.querySelector('h2');
             if (tituloModal) tituloModal.textContent = 'Nuevo Evento';
@@ -213,8 +251,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
+    // Escucha la escritura en la barra buscadora para activar el filtrado instantáneo
     if (buscarAdmin) buscarAdmin.addEventListener('input', renderTablaAdmin);
 
+    // Inicialización de arranque secuencial del sistema de control administrativo
     await cargarDepartamentosAdmin();
     renderTablaAdmin();
 });
