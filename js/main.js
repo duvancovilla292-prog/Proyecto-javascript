@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ====================
     // Captura el evento personalizado lanzado por el botón de la tarjeta del componente 'components.js'
     document.addEventListener('agregar-carrito', (e) => {
-        const { codigo, nombre, precio, imagen } = e.detail; // Desempaquetamos los datos del show enviado
-        let carrito = StorageService.getCarrito();
+        const { codigo, nombre, precio, imagen } = e.detail; // Extraemos los datos importantes que viajan pegados al evento
+        let carrito = StorageService.getCarrito();// Recuperamos la bolsa de compras actual desde el LocalStorage
         const existe = carrito.find(item => item.codigo === codigo); // Verificamos si ya estaba metido en la bolsa
 
         if (existe) {
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (formCompra) {
         formCompra.addEventListener('submit', (e) => {
             e.preventDefault(); // Cancela la recarga automática del sitio
-            const carrito = StorageService.getCarrito();
+            const carrito = StorageService.getCarrito();// Recuperamos la bolsa de compras actual desde el LocalStorage
 
             // Construimos la estructura final de la factura de venta
             const nuevaCompra = {
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 },
                 productos: carrito,
                 // .reduce() calcula la sumatoria limpia multiplicando el precio de cada ítem por su cantidad comprada
-                total: carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0)
+                total: carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0) //en esata línea se calcula el total de la compra sumando el precio de cada producto multiplicado por su cantidad
             };
 
             StorageService.saveCompra(nuevaCompra); // Almacenamos la venta en el histórico (Servirá para el panel de Admin)
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             formCompra.reset(); // Reseteamos los campos de texto del formulario de compra
             modalCompra.classList.add('oculto'); // Escondemos la interfaz del formulario
 
-            alert(`🎉 Compra exitosa. Ticket: ${nuevaCompra.codigoTicket}`); // Entregamos el comprobante visual al usuario
+            alert(`🎉 Compra exitosa. Ticket: ${nuevaCompra.codigoTicket} con un total de ${nuevaCompra.total} `); // Entregamos el comprobante visual al usuario
         });
     }
 
